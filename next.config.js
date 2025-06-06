@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Use standalone for consistent build
-  output: 'standalone',
+  // Netlify deployment - no standalone output needed
   trailingSlash: true,
   images: {
     domains: ['supabase.co'],

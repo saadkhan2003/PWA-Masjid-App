@@ -1,20 +1,14 @@
 [build]
-  publish = ".next/standalone"
+  publish = ".next"
   command = "npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
-# Netlify Next.js plugin for standalone builds
+# Netlify Next.js plugin
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Handle all routes through Next.js
-[[redirects]]
-  from = "/*"
-  to = "/dashboard"
-  status = 200
 
 # Handle PWA service worker
 [[headers]]
