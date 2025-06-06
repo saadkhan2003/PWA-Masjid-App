@@ -1,0 +1,865 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Jameel Noori Nastaleeq Urdu Font */
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('/fonts/Jameel Noori Nastaleeq Regular.woff2') format('woff2'),
+       url('/fonts/Jameel Noori Nastaleeq Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  html {
+    direction: rtl;
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Jameel Noori Nastaleeq', serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.8;
+    font-size: 18px; /* Increased base font size */
+  }
+}
+
+/* RTL Specific Styling */
+.rtl-container {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Urdu Text Styling - Increased sizes */
+.urdu-text {
+  font-family: 'Jameel Noori Nastaleeq', serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 1.8;
+  font-size: 1.25rem; /* Increased to 1.25rem (20px) */
+}
+
+.urdu-heading {
+  font-family: 'Jameel Noori Nastaleeq', serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 1.6;
+  font-weight: normal;
+  font-size: 1.5rem; /* Increased to 1.5rem (24px) */
+}
+
+.urdu-large {
+  font-family: 'Jameel Noori Nastaleeq', serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 1.7;
+  font-size: 1.75rem; /* Increased to 1.75rem (28px) */
+}
+
+.urdu-title {
+  font-family: 'Jameel Noori Nastaleeq', serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 1.5;
+  font-weight: normal;
+  font-size: 2rem; /* Increased to 2rem (32px) */
+}
+
+/* Override for specific elements that need LTR (like numbers, currency) */
+.ltr-numbers {
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: embed;
+  font-size: 1rem; /* Keep numbers normal size */
+}
+
+/* Custom PWA styles */
+.pwa-install-prompt {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #1E8A7A 0%, #2DD4BF 100%);
+  color: white;
+  padding: 1rem;
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  direction: rtl;
+  text-align: right;
+}
+
+.pwa-install-prompt.show {
+  transform: translateY(0);
+}
+
+/* Islamic design elements */
+.islamic-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(30, 138, 122, 0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* Responsive design helpers */
+@media (max-width: 640px) {
+  .mobile-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Loading animation */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Offline indicator */
+.offline-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ef4444;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  z-index: 1001;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  direction: rtl;
+}
+
+.offline-indicator.show {
+  transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Mobile-first CSS classes - RTL adjusted */
+.mobile-container {
+  padding: 1rem;
+  max-width: 100%;
+  margin: 0 auto;
+  direction: rtl;
+}
+
+/* Desktop container styles */
+@media (min-width: 640px) {
+  .mobile-container {
+    padding: 1.5rem;
+    width: 90%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-container {
+    padding: 2rem;
+    max-width: 1200px;
+    width: 85%;
+  }
+}
+
+/* ==============================================
+   DESKTOP LAYOUT IMPROVEMENTS & ORGANIZATION
+   ============================================== */
+
+/* Desktop Container System */
+.desktop-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 1536px) {
+  .desktop-container {
+    max-width: 1600px;
+    padding: 0 3rem;
+  }
+}
+
+/* Desktop Grid System */
+.desktop-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .desktop-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-grid {
+    gap: 2rem;
+  }
+}
+
+/* Desktop Column Spans */
+.desktop-col-1 { grid-column: span 1; }
+.desktop-col-2 { grid-column: span 2; }
+.desktop-col-3 { grid-column: span 3; }
+.desktop-col-4 { grid-column: span 4; }
+.desktop-col-5 { grid-column: span 5; }
+.desktop-col-6 { grid-column: span 6; }
+.desktop-col-7 { grid-column: span 7; }
+.desktop-col-8 { grid-column: span 8; }
+.desktop-col-9 { grid-column: span 9; }
+.desktop-col-10 { grid-column: span 10; }
+.desktop-col-11 { grid-column: span 11; }
+.desktop-col-12 { grid-column: span 12; }
+
+@media (max-width: 767px) {
+  [class*="desktop-col-"] {
+    grid-column: span 1;
+  }
+}
+
+/* Desktop Spacing */
+.desktop-p-6 {
+  padding: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .desktop-p-6 {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .desktop-p-6 {
+    padding: 3rem;
+  }
+}
+
+/* Desktop Cards Enhancement */
+@media (min-width: 1024px) {
+  .mobile-card {
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .mobile-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+}
+
+/* Desktop Navigation Improvements */
+.desktop-sidebar-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+@media (min-width: 1024px) {
+  .desktop-sidebar-rtl {
+    width: 280px;
+    padding: 2rem 1.5rem;
+  }
+  
+  .desktop-sidebar-rtl .group {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .desktop-sidebar-rtl .group:hover {
+    transform: translateX(-4px);
+    transition: all 0.2s ease;
+  }
+}
+
+/* Desktop Header Enhancement */
+@media (min-width: 1024px) {
+  .mobile-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+  }
+  
+  .mobile-header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-header-content p {
+    font-size: 1.125rem;
+    color: #6b7280;
+  }
+}
+
+/* Desktop Table Improvements */
+@media (min-width: 1024px) {
+  .desktop-table-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .desktop-table {
+    width: 100%;
+    border-collapse: collapse;
+    direction: rtl;
+  }
+  
+  .desktop-table th {
+    background: #f9fafb;
+    padding: 1rem 1.5rem;
+    text-align: right;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .desktop-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+    text-align: right;
+  }
+  
+  .desktop-table tr:hover {
+    background: #f9fafb;
+  }
+  
+  .desktop-table tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+/* Desktop Stats Cards */
+@media (min-width: 1024px) {
+  .desktop-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .desktop-stat-card {
+    background: linear-gradient(135deg, #1E8A7A 0%, #059669 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .desktop-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .desktop-stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    direction: ltr;
+    text-align: right;
+  }
+  
+  .desktop-stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+/* Desktop Form Improvements */
+@media (min-width: 1024px) {
+  .desktop-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .desktop-form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .desktop-form-full {
+    grid-column: 1 / -1;
+  }
+  
+  .desktop-form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .desktop-form-label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .desktop-form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .desktop-form-input:focus {
+    border-color: #1E8A7A;
+    box-shadow: 0 0 0 3px rgba(30, 138, 122, 0.1);
+    outline: none;
+  }
+}
+
+/* Desktop Action Buttons */
+@media (min-width: 1024px) {
+  .desktop-action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    direction: rtl;
+  }
+  
+  .desktop-action-group {
+    display: flex;
+    gap: 1rem;
+    direction: rtl;
+  }
+  
+  .desktop-primary-btn {
+    background: linear-gradient(135deg, #1E8A7A 0%, #059669 100%);
+    color: white;
+    padding: 0.875rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .desktop-primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(30, 138, 122, 0.4);
+  }
+  
+  .desktop-secondary-btn {
+    background: white;
+    color: #374151;
+    padding: 0.875rem 2rem;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .desktop-secondary-btn:hover {
+    background: #f9fafb;
+    border-color: #1E8A7A;
+    color: #1E8A7A;
+  }
+}
+
+/* Desktop Search and Filters */
+@media (min-width: 1024px) {
+  .desktop-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    direction: rtl;
+  }
+  
+  .desktop-search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .desktop-filter-select {
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+/* Desktop Modal Improvements */
+@media (min-width: 1024px) {
+  .desktop-modal {
+    max-width: 600px;
+    width: 90%;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    direction: rtl;
+  }
+  
+  .desktop-modal-header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .desktop-modal-content {
+    padding: 2rem;
+  }
+  
+  .desktop-modal-footer {
+    padding: 1rem 2rem 2rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    direction: rtl;
+  }
+}
+
+/* Desktop Content Organization */
+@media (min-width: 1024px) {
+  .desktop-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+  }
+  
+  .desktop-main-content {
+    grid-column: 1;
+  }
+  
+  .desktop-sidebar-content {
+    grid-column: 2;
+    position: sticky;
+    top: 6rem;
+  }
+}
+
+/* Desktop Responsive Utilities */
+@media (max-width: 1023px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-only {
+    display: none !important;
+  }
+  
+  .desktop-hide-mobile-nav {
+    padding-bottom: 0 !important;
+  }
+}
+
+/* Desktop Typography Enhancements */
+@media (min-width: 1024px) {
+  .desktop-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .desktop-subtitle {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .desktop-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+/* Enhanced Mobile Navigation - RTL */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid #e5e7eb;
+  padding: 8px 0;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  z-index: 40;
+  direction: rtl;
+}
+
+.mobile-bottom-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+  padding: 0 4px;
+  direction: rtl;
+}
+
+.mobile-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 2px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 56px;
+  direction: rtl;
+  text-align: center;
+}
+
+.mobile-bottom-nav-item:active {
+  transform: scale(0.95);
+}
+
+.mobile-bottom-nav-icon {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 3px;
+  transition: all 0.2s ease;
+}
+
+.mobile-bottom-nav-label {
+  font-size: 9px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.1;
+  direction: rtl;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-bottom-nav-item.active {
+  color: #1E8A7A;
+  background: rgba(30, 138, 122, 0.1);
+}
+
+.mobile-bottom-nav-item.active .mobile-bottom-nav-icon {
+  transform: scale(1.1);
+}
+
+/* Enhanced Mobile Drawer - RTL */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 320px;
+  background: linear-gradient(135deg, #1E8A7A 0%, #059669 100%);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+  padding: 24px;
+  overflow-y: auto;
+  direction: rtl;
+}
+
+.mobile-drawer.open {
+  transform: translateX(0);
+}
+
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  order: 1;
+  flex: 1;
+  text-align: right;
+}
+
+/* Dropdown Arrow Fix for All Selects */
+select[dir="rtl"],
+.rtl-container select,
+.urdu-text select {
+  background-position: right 12px center !important;
+  padding-right: 40px !important;
+  padding-left: 12px !important;
+}
+
+/* Fix for month/year dropdowns in payments page */
+.payments-filter select,
+.filter-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+  padding-left: 12px;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix for search inputs with icons */
+.search-container {
+  position: relative;
+}
+
+.search-container input {
+  padding-right: 40px;
+  padding-left: 12px;
+  direction: rtl;
+  text-align: right;
+}
+
+.search-container .search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Responsive RTL adjustments */
+@media (max-width: 640px) {
+  .mobile-select-rtl {
+    background-position: right 8px center;
+    padding-right: 32px;
+    padding-left: 8px;
+  }
+  
+  .mobile-input-icon-rtl {
+    padding-right: 32px;
+    padding-left: 8px;
+  }
+  
+  .mobile-input-icon-rtl + .icon {
+    right: 8px;
+  }
+}
+
+/* Override any LTR positioning for RTL context */
+.rtl-context *[class*="pl-"],
+.rtl-context *[class*="left-"] {
+  padding-left: 0 !important;
+  left: auto !important;
+}
+
+.rtl-context *[class*="pr-"],
+.rtl-context *[class*="right-"] {
+  padding-right: 0 !important;
+  right: auto !important;
+}
+
+/* Ensure proper RTL layout for flex containers */
+.rtl-flex {
+  display: flex;
+  direction: rtl;
+}
+
+.rtl-flex-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}

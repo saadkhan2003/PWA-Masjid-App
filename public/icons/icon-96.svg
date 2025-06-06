@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#2ECC71;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E8A7A;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="96" height="96" fill="url(#bgGradient)" rx="9.600000000000001"/>
+  
+  <!-- Mosque silhouette -->
+  <g fill="rgba(255,255,255,0.9)" stroke="rgba(255,255,255,0.9)" stroke-width="1.92">
+    <!-- Main dome -->
+    <path d="M 19.200000000000003 38.400000000000006 A 14.399999999999999 14.399999999999999 0 0 1 76.80000000000001 38.400000000000006 Z"/>
+    
+    <!-- Minaret -->
+    <rect x="44.160000000000004" y="14.399999999999999" width="7.68" height="24"/>
+    <circle cx="48" cy="14.399999999999999" r="3.84"/>
+    
+    <!-- Mosque base -->
+    <rect x="28.799999999999997" y="38.400000000000006" width="38.400000000000006" height="19.200000000000003"/>
+    
+    <!-- Side minarets for larger icons -->
+    
+    
+    <!-- Crescent moon -->
+    <g transform="translate(48, 9.600000000000001) rotate(-30)">
+      <circle cx="0" cy="0" r="2.4000000000000004" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="0.768" cy="-0.768" r="1.92" fill="url(#bgGradient)"/>
+    </g>
+  </g>
+  
+  <!-- App name for larger icons -->
+  
+</svg>

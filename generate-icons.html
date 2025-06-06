@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PWA Icon Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .icon-container { margin: 20px 0; }
+        .icon-preview { margin: 10px; display: inline-block; border: 1px solid #ccc; }
+        canvas { display: block; }
+        button { padding: 10px 20px; margin: 5px; background: #1E8A7A; color: white; border: none; cursor: pointer; }
+        button:hover { background: #166B5E; }
+    </style>
+</head>
+<body>
+    <h1>PWA Icon Generator for Masjid App</h1>
+    <p>Click the button below to generate and download all required PWA icons:</p>
+    
+    <button onclick="generateAllIcons()">Generate All Icons</button>
+    
+    <div id="iconContainer"></div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        
+        function createIcon(size) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient (Islamic green theme)
+            const gradient = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+            gradient.addColorStop(0, '#2ECC71');
+            gradient.addColorStop(1, '#1E8A7A');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Add mosque silhouette
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.lineWidth = size * 0.02;
+            
+            // Draw mosque dome
+            const centerX = size / 2;
+            const centerY = size * 0.4;
+            const domeRadius = size * 0.15;
+            
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, domeRadius, Math.PI, 0, false);
+            ctx.fill();
+            
+            // Draw minaret
+            const minaretWidth = size * 0.08;
+            const minaretHeight = size * 0.25;
+            ctx.fillRect(centerX - minaretWidth/2, centerY - minaretHeight, minaretWidth, minaretHeight);
+            
+            // Draw minaret top
+            ctx.beginPath();
+            ctx.arc(centerX, centerY - minaretHeight, minaretWidth/2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw mosque base
+            const baseWidth = size * 0.4;
+            const baseHeight = size * 0.2;
+            ctx.fillRect(centerX - baseWidth/2, centerY, baseWidth, baseHeight);
+            
+            // Draw crescent moon on top
+            ctx.save();
+            ctx.translate(centerX, centerY - minaretHeight - size * 0.05);
+            ctx.rotate(-Math.PI / 6);
+            ctx.beginPath();
+            ctx.arc(0, 0, size * 0.03, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(size * 0.01, -size * 0.01, size * 0.025, 0, Math.PI * 2);
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.fill();
+            ctx.restore();
+            
+            // Add app name text for larger icons
+            if (size >= 144) {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.font = `bold ${size * 0.06}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.fillText('MASJID', centerX, size * 0.8);
+                ctx.font = `${size * 0.04}px Arial`;
+                ctx.fillText('COMMITTEE', centerX, size * 0.88);
+            }
+            
+            return canvas;
+        }
+        
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        function generateAllIcons() {
+            const container = document.getElementById('iconContainer');
+            container.innerHTML = '';
+            
+            sizes.forEach(size => {
+                const canvas = createIcon(size);
+                const div = document.createElement('div');
+                div.className = 'icon-container';
+                div.innerHTML = `
+                    <h3>Icon ${size}x${size}</h3>
+                    <div class="icon-preview">
+                        ${canvas.outerHTML}
+                    </div>
+                    <button onclick="downloadSingleIcon(${size})">Download icon-${size}.png</button>
+                `;
+                container.appendChild(div);
+            });
+            
+            // Auto-download all icons
+            setTimeout(() => {
+                sizes.forEach(size => {
+                    const canvas = createIcon(size);
+                    downloadCanvas(canvas, `icon-${size}.png`);
+                });
+            }, 1000);
+        }
+        
+        function downloadSingleIcon(size) {
+            const canvas = createIcon(size);
+            downloadCanvas(canvas, `icon-${size}.png`);
+        }
+    </script>
+</body>
+</html>
